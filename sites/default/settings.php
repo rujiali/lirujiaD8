@@ -729,3 +729,8 @@ $databases['default']['default'] = array (
 );
 $settings['install_profile'] = 'standard';
 $config_directories['sync'] = 'sites/default/files/config_QsAwkZ8bYPo5KW-cWvZgPllSOUsImTHxLbCQbuj7dk9jf2sgLNSFKL4a6_Rf6axDxdlZf2WwJw/sync';
+$settings['trusted_host_patterns'] = array(
+  '^www\.lirujia\.com$',
+  'lirujia\.com$',
+  '^polymer\.lirujia\.com$',
+);
