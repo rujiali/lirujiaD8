@@ -3,27 +3,45 @@ CodeSnippet
 Installation
 ============
 
-This module requires the core CKEditor module and also the CodeSnippet plugin from CKEditor.com.
+This module requires the core CKEditor module and the CodeSnippet plugin from CKEditor.com.
 
-1. Download the plugin from http://ckeditor.com/addon/codesnippet at least version 4.5.6.
-2. Place the plugin in the root libraries folder (/libraries).
+1. Download the CodeSnippet plugin (AT LEAST version 4.5.11) from http://ckeditor.com/addon/codesnippet
+2. Place the plugin folder in the root libraries folder (/libraries/codesnippet).
 3. Enable CodeSnippet in the Drupal admin.
-4. Configure your WYSIWYG toolbar to include the button.
+4. Configure your WYSIWYG toolbar to include the buttons.
 
 Basic Usage
 ===========
 
 After completing the installation steps above, go to the filter format you want to configure (must be using CKEditor).
 
-Drag CodeSnippet icon into the active toolbar, and the config form will appear below with a syntax highlighting style and
+CodeSnippet:
+
+Drag the CodeSnippet icon into the active toolbar, and the config form will appear below with a syntax highlighting style and
 supported languages option. By default, all are checked for you. Uncheck ones you won't need, it's optional. This only controls
 the options in the dialog window of CKEditor when inserting a code snippet.
 
 Note that your filter format must support the use of pre and code tags under allowed tags as well, if using anything other
-than Full HTML.
+than Full HTML. You also need to configure the HTML filter (if Limit Allowed Tags is enabled) to allow the class attribute
+like so:
 
-Supported Languages
-===================
+  <code class=""> <pre class="">
+
+Supporting Multiple Stylesheets
+===============================
+
+While this module allows each filter format to configure a stylesheet for highlighting, the HLJS plugin does not yet support this
+feature. See this issue for more details, including a possible workaround to implementing it in your own style:
+
+https://github.com/isagalaev/highlight.js/issues/862
+
+If you are using multiple filter formats on a page, note that the highest weighted filter formats settings will be added to the page
+last and therefore that style will override any of the other HLJS styles selected in other formats.
+
+For now, it is best to only configure one format for highlighting, or, use the same style library for all formats.
+
+CodeSnippet Supported Languages
+===============================
 
 To add new options to the supported languages option in the admin form, you can use a form alter hook within your own custom module to add on:
 
